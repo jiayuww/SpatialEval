@@ -31,7 +31,7 @@ Next, we provide full scripts for inference and evaluation.
 
 #### Install
 
-1. Clone this repository:
+1. Clone this repository
 
 ```python
 git clone git@github.com:jiayuww/SpatialEval.git
