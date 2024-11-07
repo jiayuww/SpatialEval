@@ -178,3 +178,5 @@ poetry.lock
 LLaVA/
 Bunny/
 debug/
+outputs/
+eval_summary/

@@ -17,8 +17,6 @@ from llava.mm_utils import (
 )
 import re, sys
 
-from .model_utils import load_image, format_image_path
-
 
 class Llava:
     def __init__(self, model_path, model_base):
@@ -113,13 +111,3 @@ class Llava:
         answer_text = self.tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0].strip()
 
         return prompt, answer_text
-
-if __name__ == "__main__":
-    model_path = "liuhaotian/llava-v1.6-mistral-7b"
-    model_base = None
-    llava = Llava(model_path, model_base)
-    query_text = "What is unusual about this image?"
-    query_images = load_image("assets/demo_spatial_map.png")
-    prompt, answer_text = llava.generate(query_text, None)
-    print(prompt)
-    print(answer_text)

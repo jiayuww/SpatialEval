@@ -12,10 +12,6 @@ from bunny.util.utils import disable_torch_init
 from bunny.util.mm_utils import process_images, tokenizer_image_token, get_model_name_from_path, \
     KeywordsStoppingCriteria
 
-import time
-import json
-import os
-
 
 def get_bunny_model_type(model_name):
     if "phi-1.5" in model_name:
