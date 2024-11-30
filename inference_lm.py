@@ -23,8 +23,8 @@ def load_model_tokenizer_adapted(args):
 
 
 def load_model_tokenizer(args):
-    model = AutoModelForCausalLM.from_pretrained(args.model_path, device_map=args.device, cache_dir=args.cache_dir)
-    tokenizer = AutoTokenizer.from_pretrained(args.model_path, cache_dir=args.cache_dir)
+    model = AutoModelForCausalLM.from_pretrained(args.model_path, device_map=args.device)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_path)
     return model, tokenizer
 
 @torch.inference_mode()
