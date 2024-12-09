@@ -11,7 +11,7 @@ Welcome to the official codebase for [Is A Picture Worth A Thousand Words? Delvi
 
 ## 💥 News 💥
 
-* **[2024.09.16]** 🎉 SpatialEval has been accepted to **NeurIPS 2024**!
+* **[2024.09.25]** 🎉 SpatialEval has been accepted to **NeurIPS 2024**!
 * **[2024.09.16]** 🌟 SpatialEval has been included in [Eureka](https://www.microsoft.com/en-us/research/publication/eureka-evaluating-and-understanding-large-foundation-models/) from **Microsoft Research**!
 
 * **[2024.06.21]** 📢 SpatialEval is now publicly available on [arXiv](https://arxiv.org/abs/2406.14852)
