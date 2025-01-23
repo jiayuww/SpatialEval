@@ -2,11 +2,43 @@
 
 Welcome to the official codebase for [Is A Picture Worth A Thousand Words? Delving Into Spatial Reasoning for Vision Language Models](https://arxiv.org/abs/2406.14852). 
 
-[[📖 Paper](https://arxiv.org/pdf/2406.14852)] [[🤗 Huggingface Dataset](https://huggingface.co/datasets/MilaWang/SpatialEval)]
+## 📌 Quick Links
+[![Project Page](https://img.shields.io/badge/🌐_Project_Page-blue?style=for-the-badge)](https://spatialeval.github.io/)
+[![Paper](https://img.shields.io/badge/📖_Paper-red?style=for-the-badge)](https://arxiv.org/pdf/2406.14852)
+[![Dataset](https://img.shields.io/badge/🤗_Dataset-green?style=for-the-badge)](https://huggingface.co/datasets/MilaWang/SpatialEval)
+[![Talk](https://img.shields.io/badge/🎤_5_min_Talk-purple?style=for-the-badge)](https://neurips.cc/virtual/2024/poster/94371)
+
+
+## 💥 News 💥
+
+* **[2024.09.25]** 🎉 SpatialEval has been accepted to **NeurIPS 2024**!
+* **[2024.09.16]** 🌟 SpatialEval has been included in [Eureka](https://www.microsoft.com/en-us/research/publication/eureka-evaluating-and-understanding-large-foundation-models/) from **Microsoft Research**!
+
+* **[2024.06.21]** 📢 SpatialEval is now publicly available on [arXiv](https://arxiv.org/abs/2406.14852)
+
+## 🤔 About SpatialEval
+
+SpatialEval is a comprehensive benchmark for evaluating spatial intelligence in LLMs and VLMs across four key dimensions:
+- Spatial relationships
+- Positional understanding
+- Object counting
+- Navigation
+
+### Benchmark Tasks
+1. **Spatial-Map**: Understanding spatial relationships between objects in map-based scenarios
+2. **Maze-Nav**: Testing navigation through complex environments
+3. **Spatial-Grid**: Evaluating spatial reasoning within structured environments
+4. **Spatial-Real**: Assessing real-world spatial understanding
+
+Each task supports three input modalities:
+- Text-only (TQA)
+- Vision-only (VQA)
+- Vision-Text (VTQA)
+
+![SpatialEval Overview](assets/spatialeval_task.png)
 
 
 ## 🚀 Quick Start
-
 
 
 ### 📍 Load Dataset
@@ -42,30 +74,47 @@ git clone git@github.com:jiayuww/SpatialEval.git
 To run models like LLaVA and Bunny, install [LLaVA](https://github.com/haotian-liu/LLaVA) and [Bunny](https://github.com/BAAI-DCAI/Bunny). Install [fastchat](https://github.com/lm-sys/FastChat) for language model inference.
 For Bunny variants, ensure you merge LoRA weights into the base LLMs before initiation.
 
-#### 💬 Inference
+#### 💬 Running Inference
 
-For example, to run on Llama-3-8B for all four tasks:
+For language models, for example, to run on Llama-3-8B for all four tasks:
 
 ```bash
-# inference TQA on all tasks
-python inference_lm.py --task "all" --mode "tqa" --w_reason --model-path "meta-llama/Meta-Llama-3-8B-Instruct" --output_folder outputs --temperature 0.2 --top_p 0.9 --repetition_penalty 1.0 --max_new_tokens 512 --device "cuda"
-# inference TQA on Spatial-Map
-python inference_lm.py --task "spatialmap" --mode "tqa" --w_reason --model-path "meta-llama/Meta-Llama-3-8B-Instruct" --output_folder outputs --temperature 0.2 --top_p 0.9 --repetition_penalty 1.0 --max_new_tokens 512 --device "cuda"
-# inference TQA on Maze-Nav
-python inference_lm.py --task "mazenav" --mode "tqa" --w_reason --model-path "meta-llama/Meta-Llama-3-8B-Instruct" --output_folder outputs --temperature 0.2 --top_p 0.9 --repetition_penalty 1.0 --max_new_tokens 512 --device "cuda"
-# inference TQA on Spatial-Grid
-python inference_lm.py --task "spatialgrid" --mode "tqa" --w_reason --model-path "meta-llama/Meta-Llama-3-8B-Instruct" --output_folder outputs --temperature 0.2 --top_p 0.9 --repetition_penalty 1.0 --max_new_tokens 512 --device "cuda"
-# inference TQA on Spatial-Real
-python inference_lm.py --task "spatialreal" --mode "tqa" --w_reason --model-path "meta-llama/Meta-Llama-3-8B-Instruct" --output_folder outputs --temperature 0.2 --top_p 0.9 --repetition_penalty 1.0 --max_new_tokens 512 --device "cuda"
+# Run on all tasks
+python inference_lm.py \
+    --task "all" \
+    --mode "tqa" \
+    --w_reason \
+    --model-path "meta-llama/Meta-Llama-3-8B-Instruct" \
+    --output_folder outputs \
+    --temperature 0.2 \
+    --top_p 0.9 \
+    --repetition_penalty 1.0 \
+    --max_new_tokens 512 \
+    --device "cuda"
+
+# For specific tasks, replace "all" with:
+# - "spatialmap"
+# - "mazenav"
+# - "spatialgrid"
+# - "spatialreal"
 ```
 
-To run LLaVA-1.6-Mistral-7B across all tasks:
+For vision-language models, for example, to run LLaVA-1.6-Mistral-7B across all tasks:
 
 ```python
-# inference VQA on all tasks
-python inference_vlm.py --mode "vqa" --task "all" --model_path "liuhaotian/llava-v1.6-mistral-7b" --w_reason --temperature 0.2 --top_p 0.9 --repetition_penalty 1.0 --max_new_tokens 512 --device "cuda"
-# inference VTQA on all tasks
-python inference_vlm.py --mode "vtqa" --task "all" --model_path "liuhaotian/llava-v1.6-mistral-7b" --w_reason --temperature 0.2 --top_p 0.9 --repetition_penalty 1.0 --max_new_tokens 512 --device "cuda"
+# VQA mode
+python inference_vlm.py \
+    --mode "vqa" \
+    --task "all" \
+    --model_path "liuhaotian/llava-v1.6-mistral-7b" \
+    --w_reason \
+    --temperature 0.2 \
+    --top_p 0.9 \
+    --repetition_penalty 1.0 \
+    --max_new_tokens 512 \
+    --device "cuda"
+
+# For VTQA mode, use --mode "vtqa"
 ```
 
 Example bash scripts are available in the `scripts/` folder. For more configurations, see `configs/inference_configs.py`. VLMs support `tqa`, `vqa`, and `vtqa` modes, while LMs support `tqa` only. Tasks include all four tasks or individual tasks like `spatialmap`, `mazenav`, `spatialgrid`, and `spatialreal`.
@@ -95,10 +144,15 @@ Stay tuned! The dataset generation script will be released in Feburary 😉
 If you find our work helpful, please consider citing our paper 😊
 
 ```
-@article{wang2024spatial,
-  title={Is A Picture Worth A Thousand Words? Delving Into Spatial Reasoning for Vision Language Models},
-  author={Wang, Jiayu and Ming, Yifei and Shi, Zhenmei and Vineet, Vibhav and Wang, Xin and Li, Yixuan and Joshi, Neel},
-  journal={arXiv preprint arXiv:2406.14852},
-  year={2024}
-}
+@inproceedings{wang2024spatial,
+        title={Is A Picture Worth A Thousand Words? Delving Into Spatial Reasoning for Vision Language Models},
+        author={Wang, Jiayu and Ming, Yifei and Shi, Zhenmei and Vineet, Vibhav and Wang, Xin and Li, Yixuan and Joshi, Neel},
+        booktitle={The Thirty-Eighth Annual Conference on Neural Information Processing Systems},
+        year={2024}
+      }
 ```
+
+## 💬 Questions
+Have questions? We're here to help!
+- Open an issue in this repository
+- Contact us through the channels listed on our project page
