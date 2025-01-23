@@ -88,7 +88,7 @@ Evaluation can also be configured for other tasks `mazenav`, `spatialgrid`, and 
 
 ### 💡 Dataset Generation Script
 
-Stay tuned! The dataset generation script will be released in November 😉
+Stay tuned! The dataset generation script will be released in Feburary 😉
 
 ## ⭐ Citation
 
